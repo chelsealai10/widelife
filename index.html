@@ -304,7 +304,7 @@ text-align:center;
         }
 
         // Update the scene image
-        document.getElementById("sceneimg").src = curScene + ".jpg";
+        document.getElementById("sceneimg").src = "images/"+ curScene + ".jpg";
 
         // Update the scene description text and decisions
         replaceNodeText("scenetext", message);
@@ -334,9 +334,9 @@ history.removeChild(history.firstChild);
 <title>動物英雄：野生動物救援行動</title>
 	
 </head>
-<body style=" background-image: url(../線性/images/background.jpg); background-size:cover;background-attachment: fixed;">
+<body style=" background-image: url(images/background.jpg); background-size:cover;background-attachment: fixed;">
 	 <div style="margin-top:20px; text-align:center;">
-<img src="../線性/images/100.png" style="width:550px;"alt="">
+<img src="images/100.png" style="width:550px;"alt="">
 		 <div class="game">
 		 
 		 </div>
@@ -350,7 +350,7 @@ history.removeChild(history.firstChild);
 			  </div>
 -->
 	   </div> 
-			 <img id="sceneimg" src="../線性/0.jpg" alt="candy" style="width:600px;border-radius: 5px;" /><br/>
+			 <img id="sceneimg" src="images/0.jpg" alt="candy" style="width:600px;border-radius: 5px;" /><br/>
 		   <div class="words" id="scenetext" style="font-size: 16px";></div>
 		
       <span id="decision1" class="decision" onclick="changeScene(1)"
