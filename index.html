@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+<head>
+	<style>
+		.{
+			color: purple;
+font-family:"Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+text-align:center;
+		}
+		div.words{
+			width:500px;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: left;
+		}
+		div.content{
+			text-align:left;
+			width:800px;
+			margin-left: auto;
+			margin-right: auto;
+			
+			
+		}
+		
+		div.content p{
+			font-size:1rem;
+			line-height:2;
+			color:#35583F;
+		}
+		div.content hr{
+			border: 1px solid rgba(0,0,0,0.3);
+		}
+		div.content h1{
+			color:#35583F;
+		}
+		div.tittle{
+			display:flex;
+			justify-content: center; 
+            align-items: center; 
+		}
+		span.decision {
+/*	box-shadow:inset 0px 1px 0px 0px #ffb0e7;*/
+/*
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #347855));
+	background:-moz-linear-gradient(top, #ffe9bd 5%, #347855 100%);
+	background:-webkit-linear-gradient(top, #ffe9bd 5%, #43430B 100%);
+	background:-o-linear-gradient(top, #ffe9bd 5%, #43430B 100%);
+	background:-ms-linear-gradient(top, #eeeee 5%, #43430B 100%);
+	background:linear-gradient(to bottom, #ffe9bd 5%, #43430B 100%);
+*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe9bd', endColorstr='#347855',GradientType=0);
+	background-color:#2A593F;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:10px;
+	border:1.5px solid #86C17E;
+	display:inline-block;
+	cursor:pointer;
+	color:#86C17E;
+	font-size:1rem;
+	font-weight:500;
+	padding:6px 24px;
+	text-decoration:none;
+/*	text-shadow:0px 1px 0px #c70067;*/
+
+}
+      span.decisionhover {
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe9bd', endColorstr='#347855',GradientType=0);
+	background-color:#86C17E;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:10px;
+	border:1.5px solid #2A593F ;
+	display:inline-block;
+	cursor:pointer;
+	color:#2A593F;
+	font-size:1rem;
+	font-weight:bold;
+	padding:6px 24px;
+		  text-decoration:none;}
+		
+	body {
+    background-image: url(images/background.jpg);
+    background-repeat: no-repeat;
+}
+		@media screen and (max-width:768px) { 
+ span.decision {
+
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe9bd', endColorstr='#347855',GradientType=0);
+	background-color:#2A593F;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:10px;
+	border:1.5px solid #86C17E;
+	display:inline-block;
+	cursor:pointer;
+	color:#86C17E;
+	font-size:2rem;
+	font-weight:500;
+	padding:6px 24px;
+	text-decoration:none;
+/*	text-shadow:0px 1px 0px #c70067;*/
+
+}
+			 span.decisionhover {
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe9bd', endColorstr='#347855',GradientType=0);
+	background-color:#86C17E;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:10px;
+	border:1.5px solid #2A593F ;
+	display:inline-block;
+	cursor:pointer;
+	color:#2A593F;
+	font-size:2rem;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}
+		}
+    </style>
+	
+<script>
+		 var curScene = 0;
+
+      function replaceNodeText(id, newText) {
+        var node = document.getElementById(id);
+        while (node.firstChild)
+          node.removeChild(node.firstChild);
+        node.appendChild(document.createTextNode(newText));
+      }
+
+      function changeScene(decision) {
+        // Clear the scene message
+        var message = "";
+        var decision1 = "", decision2 = "";
+
+        switch (curScene) {
+        case 0:	
+          curScene = 1;
+          document.getElementById("decision2").style.visibility="visible";
+          document.getElementById("decision1").style.marginLeft="auto";
+//          message = "你在森林中散步時，發現一隻無明顯外傷捲起來的穿山甲，你將如何幫助它呢？";
+          decision1 = "嘗試捕捉並救治";
+          decision2 = "安靜離開，不要驚動他";
+          break;
+        case 1:
+          if (decision == 2) {
+          curScene = 3;
+//            message = "安靜遠離穿山甲後，聽到草叢中傳來窸窣聲，是隻被捕獸夾夾傷的台灣石虎，應該馬上";
+            decision1 = "打電話給野生動物救援單位";
+            decision2 = "嘗試使用手邊工具打開捕獸夾";
+			  
+          }
+          else {
+			 curScene = 16
+//            message = "穿山甲遇到外界干擾會捲起，屬於自然反應，且穿山甲為保育類動物，食性特殊，照養困難，請勿留置飼養。";
+            decision1 = "回到上一步"
+            document.getElementById("decision2").style.visibility="hidden";
+            document.getElementById("decision1").style.marginLeft="50px";
+          }
+          break;
+        case 2:
+          if (decision == 1) {
+            curScene = 4
+//            message = "當你靠近時，石虎相當的凶，不時露出尖牙作勢要咬人，並嘗試想掙脫捕獸夾，使得石虎傷口更加嚴重了";
+            decision1 = "回到上一步"
+            document.getElementById("decision2").style.visibility="hidden";
+            document.getElementById("decision1").style.marginLeft="50px";
+          }
+         
+          break;
+        case 3:
+          if (decision == 1) {
+            curScene = 6
+//            message = "野生動物救援單位獲報後即將派人前往協助，在這個過程中，你需要注意安全，避免觸怒石虎，對自己和石虎造成更多傷害，你可以為石虎做些什麼？";
+            decision1 = "餵食食物及給予充足水份";
+            decision2 = "隨時紀錄動物狀況";
+          }
+          else {
+            curScene = 7;
+//            message = "當你靠近時，石虎相當的凶，不時露出尖牙作勢要咬人，並嘗試想掙脫捕獸夾，使得石虎傷口更加嚴重了";
+            decision1 = "回到上一步"
+            document.getElementById("decision2").style.visibility="hidden";
+            document.getElementById("decision1").style.marginLeft="50px";
+          }
+          break;
+        case 6:
+          if (decision == 2) {
+            curScene = 9
+//            message = "終於等到救援單位的到來，救援人員為石虎做簡單急救處置後準備帶回動物救援中心，你決定跟著去了解更多知識，你認為可能即將前往何處？";
+            decision1 = "行政院農業委員會特有生物研究保育中心野生動物急救站";
+            decision2 = "行政院農業委員會農業試驗所";
+          }
+          else {
+            curScene = 8;
+//            message = "運輸前或運輸過程中餵食或給予水分，都容易造成動物在運輸中嘔吐，運輸過程中放置水盆也會造成動物因潮濕而失溫，或溺斃於其中。";
+            decision1 = "回到上一步"
+            document.getElementById("decision2").style.visibility="hidden";
+            document.getElementById("decision1").style.marginLeft="50px";
+          }
+          break;
+		case 9:
+          if (decision == 1) {
+             curScene = 10
+//            message = "你和志工一起將石虎運到救援中心，專業的獸醫團隊發現石虎受傷情況嚴重，需要立即進行手術。等待過程中，你在佈告欄看到如何辨認石虎的文宣，根據特徵何者為石虎?";
+            decision1 = "左";
+            decision2 = "右";
+          }
+          else {
+            curScene = 8;
+//            message = "運輸前或運輸過程中餵食或給予水分，都容易造成動物在運輸中嘔吐，運輸過程中放置水盆也會造成動物因潮濕而失溫，或溺斃於其中。";
+            decision1 = "回到上一步"
+            document.getElementById("decision2").style.visibility="hidden";
+            document.getElementById("decision1").style.marginLeft="50px";
+          }
+          break;
+		case 10:
+          if (decision == 1) {
+             curScene = 11
+//            message = "與志工聊天過程中得知，近年來人類不斷的開發淺山，使得人獸衝突不斷，根據野生動物急救站分析歷年收容、照養的傷病野生動物，其中最常見的傷病原因你認為為何者？";
+            decision1 = "人為飼養";
+            decision2 = "遭受撞擊";
+          }
+          else {
+            curScene = 12;
+//            message = "你認錯囉～雲豹滅絕後，石虎成了台灣最後的原生貓科動物；卻因為棲地破壞、人為獵捕等原因，族群數量越來越少...... 根據研究學者調查估計，全台灣的石虎族群大約只剩468-669隻；而根據農委會2017年家貓統計，全台家貓數量達733,207隻。（還不包含街頭的浪貓！）";
+            decision1 = "回到上一步"
+            document.getElementById("decision2").style.visibility="hidden";
+            document.getElementById("decision1").style.marginLeft="50px";
+          }
+          break;
+		case 11:
+          if (decision == 2) {
+             curScene = 13
+//            message = "與志工聊天過程中得知，近年來人類不斷的開發淺山，使得人獸衝突不斷，根據野生動物急救站分析歷年收容、照養的傷病野生動物，其中最常見的傷病原因你認為為何者？";
+            decision1 = "再玩一次"
+            document.getElementById("decision2").style.visibility="hidden";
+            document.getElementById("decision1").style.marginLeft="50px";
+          }
+          else {
+            curScene = 14;
+//            message = "根據野生動物急救站分析歷年收容、照養的傷病野生動物，其中最常見的傷病原因為遭受撞擊";
+            decision1 = "回到上一步"
+            document.getElementById("decision2").style.visibility="hidden";
+            document.getElementById("decision1").style.marginLeft="50px";
+          }
+          break;
+		 case 16:
+          curScene = 1;
+          document.getElementById("decision2").style.visibility="visible";
+          document.getElementById("decision1").style.marginLeft="auto";
+//          message = "你在森林中散步時，發現一隻無明顯外傷捲起來的穿山甲，你將如何幫助它呢？";
+          decision1 = "嘗試捕捉並救治";
+          decision2 = "安靜離開，不要驚動他";
+          break;
+        case 4:
+          curScene = 0;
+          decision1 = "遊戲開始";
+          decision2 = "";
+          break;
+        case 5:
+          curScene = 0;
+          decision1 = "遊戲開始";
+          decision2 = "";
+          break;
+        case 7:
+         curScene = 3;
+				document.getElementById("decision2").style.visibility="visible";
+          document.getElementById("decision1").style.marginLeft="auto";
+//            message = "安靜遠離穿山甲後，聽到草叢中傳來窸窣聲，是隻被捕獸夾夾傷的台灣石虎，應該馬上";
+            decision1 = "打電話給野生動物救援單位";
+            decision2 = "嘗試使用手邊工具打開捕獸夾";
+          break;
+        case 8:
+         curScene = 6
+				document.getElementById("decision2").style.visibility="visible";
+          document.getElementById("decision1").style.marginLeft="auto";
+//            message = "野生動物救援單位獲報後即將派人前往協助，在這個過程中，你需要注意安全，避免觸怒石虎，對自己和石虎造成更多傷害，你可以為石虎做些什麼？";
+            decision1 = "餵食食物及給予充足水份";
+            decision2 = "隨時紀錄動物狀況";
+          break;
+        case 12:
+          curScene = 10
+				document.getElementById("decision2").style.visibility="visible";
+          document.getElementById("decision1").style.marginLeft="auto";
+//            message = "你和志工一起將石虎運到救援中心，專業的獸醫團隊發現石虎受傷情況嚴重，需要立即進行手術。等待過程中，你在佈告欄看到如何辨認石虎的文宣，根據特徵何者為石虎?";
+            decision1 = "左";
+            decision2 = "右";
+          break;
+		case 13:
+         curScene = 0;
+          decision1 = "遊戲開始";
+          decision2 = "";
+          break;
+		case 14:
+         curScene = 11
+				document.getElementById("decision2").style.visibility="visible";
+          document.getElementById("decision1").style.marginLeft="auto";
+//            message = "與志工聊天過程中得知，近年來人類不斷的開發淺山，使得人獸衝突不斷，根據野生動物急救站分析歷年收容、照養的傷病野生動物，其中最常見的傷病原因你認為為何者？";
+            decision1 = "人為飼養";
+            decision2 = "遭受撞擊";
+          break;		
+        }
+
+        // Update the scene image
+        document.getElementById("sceneimg").src = curScene + ".jpg";
+
+        // Update the scene description text and decisions
+        replaceNodeText("scenetext", message);
+        replaceNodeText("decision1", decision1);
+        replaceNodeText("decision2", decision2);
+
+
+var history = document.getElementById("history");
+if(curScene != 0) {
+var decisionElem = document.createElement("p");
+decisionElem.appendChild(document.createTextNode("decision "+decision+"-> Scene "+curScene+": "+message));
+history.appendChild(decisionElem);
+}
+else{
+while(history.firstChild)
+history.removeChild(history.firstChild);
+}
+}
+   
+
+	</script>
+<meta charset="UTF-8">
+<!--
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" >
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+-->
+<title>動物英雄：野生動物救援行動</title>
+	
+</head>
+<body style=" background-image: url(../線性/images/background.jpg); background-size:cover;background-attachment: fixed;">
+	 <div style="margin-top:20px; text-align:center;">
+<img src="../線性/images/100.png" style="width:550px;"alt="">
+		 <div class="game">
+		 
+		 </div>
+		 <div class="content">
+		  <p>&emsp;&emsp;也許您從沒想過您會有機會幫助身陷痛苦的野生動物，例如發現撞擊玻璃、車禍、掛鳥網、中獸鋏的野生動物，或是落巢失怙的幼鳥、幼獸…等。<br>&emsp;&emsp;您要向這些受傷生病的野生動物伸出援手時，一定要知道這些動物是將您當作敵人看待，因此可能會攻擊您。知道如何減輕傷病野生動物的恐懼和疼痛方法，將有助於動物的救治處理。在此我們要告訴您，當您正準備對受傷、生病的野生動物伸出援手前，請先留意：眼前的野生動物是不是真的需要幫助？以及，該如何幫助傷病野生動物，才是正確的。以下將介紹如何應對受傷野生動物以及後送單位。</p>
+			 </div>
+		   <div class="content">
+<!--
+	<div class="tittle">
+			 <img src="images/icon.png" style="width:30px;height: 35px; padding-right: 5px;"alt=""><h1>救援行動</h1>
+			  </div>
+-->
+	   </div> 
+			 <img id="sceneimg" src="../線性/0.jpg" alt="candy" style="width:600px;border-radius: 5px;" /><br/>
+		   <div class="words" id="scenetext" style="font-size: 16px";></div>
+		
+      <span id="decision1" class="decision" onclick="changeScene(1)"
+        onmouseover="this.className = 'decisionhover'"
+        onmouseout="this.className = 'decision'" style="margin-Left:50px">遊戲開始</span>
+      <span id="decision2" class="decision" onclick="changeScene(2)"
+        onmouseover="this.className = 'decisionhover'"
+        onmouseout="this.className = 'decision'"
+        style="visibility:hidden"></span>
+		 
+		
+	   <div class="content">
+				   <br/>
+	     <hr>
+	<div class="tittle">
+			 <img src="images/icon.png" style="width:30px;height: 35px; padding-right: 5px;"alt=""><h1>遇到野生動物該怎辦？</h1>
+	     </div>
+	<h2>1/觀察、保護自己</h2>
+		<p>在出手之前，我們需要先觀察動物是否真的需要介入救援。花點時間在遠處觀察，若是練飛的幼鳥或短暫跟親獸分開的幼崽，父母親可能就在附近，並非真的失親，便無需救援後送。如果動物狀況不對，才以人畜雙方安全為前提下進行救援。有時難以辨識是否需要協助救援，此時可以先聯繫救援單位，確認動物狀況後再執行後續救援步驟。</p>
+			 <h2>2/小心捕捉、適當安置</h2>
+		<p>動物救援必然重要，保護自己不在過程中受傷或染疫，才是救援工作的長久之計。如經觀察後確認動物需要救援，救援者須準備適當大小的紙箱，使用手套、毛巾或身邊的衣物進行捕捉，切勿徒手捕捉以免受傷。若為中大型較具危險性的哺乳類動物，可以撥打市民專線1999，請地方政府農畜處或保育科協助救援。
+         成功捕捉後，將動物安置於事先準備好的容器中，外層可蓋上毛巾，讓動物處在黑暗的環境之下，避免直接看到外界動靜，可有效地使受傷動物的情緒趨於穩定，尤其在禽鳥類、山羌或穿山甲，更是至關重要的救援環節。</p>
+			  <h2>3/聯絡後送單位</h2>
+		<p>救援過程中避免餵食、餵水。運送過程盡量小心，避免使動物碰撞，導致二度傷害。抵達救援單位時，請告知工作人員救援現場狀況，發現地點與周遭環境，協助釐清病情，才能讓動物接受正確與有效的治療。</p> <hr>
+		 <div class="tittle">
+			 <img src="images/icon.png" style="width:30px;height: 35px; padding-right: 5px;"alt=""><h1>救援流程3步驟</h1>
+	     </div>
+		
+	   </div>
+		 <img id="sceneimg" src="images/3steps.png" alt="candy" style="width:80%;border-radius: 5px;" /> 
+		 
+      
+    </div>
+<!--<div id=history></div>-->
+</body>
+</html>
