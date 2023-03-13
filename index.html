@@ -52,6 +52,18 @@ text-align:center;
 			height: 35px; 
 			padding-right: 5px;
 		}
+		div.steps{
+			width:90%;
+			text-align:center;
+			margin-left: auto;
+			margin-right: auto;
+			
+		}
+		div.steps img{
+			justify-content: center; 
+			 align-items: center; 
+			height:120px;
+		}
 		span.decision {
 /*	box-shadow:inset 0px 1px 0px 0px #ffb0e7;*/
 /*
@@ -99,13 +111,19 @@ text-align:center;
 	background-attachment: fixed;
 	background-size:cover;
 }
-		@media screen and (max-width:768px) { 
-			body {
-    background-image: url(images/background.jpg);
-    background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size:cover;
+		body:before {
+  content: ' ';
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(images/background.jpg) center 0 no-repeat;
+  background-size: cover;
 }
+		@media screen and (max-width:768px) { 
+		
 	div.gametittle img{
 			width: 360px;
 		}
@@ -125,6 +143,17 @@ text-align:center;
 			font-size:1rem;
 			line-height:2;
 			color:#0D2403;
+		}
+			div.steps{
+			width:90%;
+			text-align:left;
+			
+			
+		}
+		div.steps img{
+			justify-content: center; 
+			 align-items: center; 
+			height:100px;
 		}
  span.decision {
 	font-size:1.2rem;
@@ -380,9 +409,7 @@ history.removeChild(history.firstChild);
 		   <div class="content2">
  <img id="sceneimg" src="images/0.jpg" alt="candy"><br/>
 	   </div> 
-			
 		   <div class="words" id="scenetext"></div>
-		
       <span id="decision1" class="decision" onclick="changeScene(1)"
         onmouseover="this.className = 'decisionhover'"
         onmouseout="this.className = 'decision'" style="margin-Left:50px">遊戲開始</span>
@@ -390,8 +417,6 @@ history.removeChild(history.firstChild);
         onmouseover="this.className = 'decisionhover'"
         onmouseout="this.className = 'decision'"
         style="visibility:hidden"></span>
-		 
-		
 	   <div class="content">
 				   <br/>
 	     <hr>
@@ -406,14 +431,16 @@ history.removeChild(history.firstChild);
 			  <h2>3/聯絡後送單位</h2>
 		<p>救援過程中避免餵食、餵水。運送過程盡量小心，避免使動物碰撞，導致二度傷害。抵達救援單位時，請告知工作人員救援現場狀況，發現地點與周遭環境，協助釐清病情，才能讓動物接受正確與有效的治療。</p> <hr>
 		 <div class="tittle">
-			 <img src="images/icon.png" style="width:30px;height: 35px; padding-right: 5px;"alt=""><h1>救援流程3步驟</h1>
+			 <img src="images/icon.png" alt=""><h1>救援流程3步驟</h1>
 	     </div>
 		
 	   </div>
-		 <img id="sceneimg" src="images/3steps.png" alt="candy" style="width:80%;border-radius: 5px;" /> 
-		 
-      
     </div>
+		 <div class="steps">
+		  <img src="images/step1.png" alt="candy">
+			 <img src="images/step2.png" alt="candy"> 
+			 <img src="images/step3.png" alt="candy"> 
+		 </div>
 <!--<div id=history></div>-->
 </body>
 </html>
